@@ -1,0 +1,1917 @@
+backend:
+  name: git-gateway
+  branch: main
+local_backend: true
+locale: en
+media_folder: static/images
+public_folder: /images
+publish_mode: editorial_workflow
+logo_url: https://example.com/logo.png
+collections:
+  - name: blog-posts
+    label: Blog-posts
+    label_singular: Blog-post
+    description: Blog-post documents consisting of default content elements
+    folder: content/blog-posts
+    create: true
+    delete: true
+    identifier_field: title
+    extension: md
+    slug: '{{fields.slug}}'
+    fields:
+      - label: Content
+        name: content
+        widget: markdown
+        hint: Body text for the blog post
+        required: false
+      - label: Type
+        name: type
+        widget: hidden
+        description: Internal type for interface resolution
+        default: blog-post
+      - label: Aside
+        name: aside
+        widget: object
+        fields:
+          - label: Date
+            name: date
+            widget: string
+            hint: The date when the blog post was published
+            required: false
+          - label: ReadingTime
+            name: readingTime
+            widget: string
+            hint: The reading time for the blog post
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: blog-aside
+          - label: Author
+            name: author
+            widget: object
+            fields:
+              - label: Byline
+                name: byline
+                widget: string
+                hint: The byline of the author
+                required: false
+              - label: Email
+                name: email
+                widget: string
+                hint: The Email of the author
+                required: false
+              - label: Image
+                name: image
+                widget: image
+                hint: The image URL of the author
+                required: false
+              - label: Name
+                name: name
+                widget: string
+                hint: The name of the author
+                required: false
+              - label: Twitter
+                name: twitter
+                widget: string
+                hint: The Twitter name of the author
+                required: false
+            collapsed: true
+            hint: The author of the blog post
+            required: false
+          - label: SocialSharing
+            name: socialSharing
+            widget: list
+            hint: Abstracts a blog post concept into JSON schema
+            required: false
+            fields:
+              - label: Href
+                name: href
+                widget: string
+                hint: The href for the social link
+                required: false
+              - label: Icon
+                name: icon
+                widget: string
+                hint: The icon name for the social link
+                required: false
+              - label: Title
+                name: title
+                widget: string
+                hint: The title for the social link
+                required: false
+        collapsed: true
+        hint: Meta info for a singular blog entry
+        required: false
+      - label: Cta
+        name: cta
+        widget: object
+        fields:
+          - label: Headline
+            name: headline
+            widget: markdown
+            hint: Headline for the Component element
+            required: false
+          - label: HighlightText
+            name: highlightText
+            widget: boolean
+            hint: Visually highlight the text
+            required: false
+          - label: Sub
+            name: sub
+            widget: markdown
+            hint: Subheadline below the component headline
+            required: false
+          - label: Text
+            name: text
+            widget: markdown
+            hint: Info text for the component element
+            required: false
+          - label: TextAlign
+            name: textAlign
+            widget: select
+            options:
+              - label: left
+                value: left
+              - label: center
+                value: center
+            default: left
+            hint: Choose the alginment of the text
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: cta
+          - label: Buttons
+            name: buttons
+            widget: list
+            hint: Abstracts a blog post concept into JSON schema
+            required: false
+            fields:
+              - label: Icon
+                name: icon
+                widget: string
+                hint: Choose an icon
+                required: false
+              - label: Label
+                name: label
+                widget: string
+                hint: Text content to display inside the button
+                required: false
+              - label: Target
+                name: target
+                widget: string
+                hint: >-
+                  Target that should be linked, makes the button behave like a
+                  link semantically
+                required: false
+        collapsed: true
+        hint: Cta
+        required: false
+      - label: Head
+        name: head
+        widget: object
+        fields:
+          - label: Date
+            name: date
+            widget: string
+            hint: The date when the blog post was published
+            required: false
+          - label: Headline
+            name: headline
+            widget: markdown
+            hint: The headline of the blog post
+            required: false
+          - label: Image
+            name: image
+            widget: image
+            hint: The source of the cover image for the blog post
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: blog-head
+          - label: Tags
+            name: tags
+            widget: list
+            hint: Abstracts a blog post concept into JSON schema
+            required: false
+        collapsed: true
+        hint: Intro portion of a singular blog entry
+        required: false
+      - label: Seo
+        name: seo
+        widget: object
+        fields:
+          - label: CardImage
+            name: cardImage
+            widget: string
+            hint: Card preview image (larger, e.g. Twitter) used for the page
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            hint: Description used for the page
+            required: false
+          - label: Image
+            name: image
+            widget: image
+            hint: Preview image used for the page
+            required: false
+          - label: Keywords
+            name: keywords
+            widget: string
+            hint: Keywords used for the page
+            required: false
+          - label: Title
+            name: title
+            widget: string
+            hint: Title used for the page
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: seo
+        collapsed: true
+        hint: Abstracts SEO settings for a website into JSON schema
+        required: false
+  - name: pages
+    label: Pages
+    label_singular: Page
+    description: Page documents consisting of default content elements
+    folder: content/pages
+    create: true
+    delete: true
+    identifier_field: title
+    extension: md
+    slug: '{{fields.slug}}'
+    fields:
+      - label: Type
+        name: type
+        widget: hidden
+        description: Internal type for interface resolution
+        default: page
+      - label: Seo
+        name: seo
+        widget: object
+        fields:
+          - label: CardImage
+            name: cardImage
+            widget: string
+            hint: Card preview image (larger, e.g. Twitter) used for the page
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            hint: Description used for the page
+            required: false
+          - label: Image
+            name: image
+            widget: image
+            hint: Preview image used for the page
+            required: false
+          - label: Keywords
+            name: keywords
+            widget: string
+            hint: Keywords used for the page
+            required: false
+          - label: Title
+            name: title
+            widget: string
+            hint: Title used for the page
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: seo
+        collapsed: true
+        hint: Abstracts SEO settings for a website into JSON schema
+        required: false
+      - label: Section
+        name: section
+        widget: list
+        hint: Abstracts a page concept into JSON schema
+        required: false
+        fields:
+          - label: BackgroundColor
+            name: backgroundColor
+            widget: select
+            options:
+              - label: default
+                value: default
+              - label: accent
+                value: accent
+              - label: bold
+                value: bold
+            default: default
+            hint: Color of background
+            required: false
+          - label: HeaderSpacing
+            name: headerSpacing
+            widget: boolean
+            hint: Reserve additional spacing for a floating header
+            required: false
+          - label: Inverted
+            name: inverted
+            widget: boolean
+            hint: Whether to invert the section
+            required: false
+          - label: SpaceAfter
+            name: spaceAfter
+            widget: select
+            options:
+              - label: default
+                value: default
+              - label: small
+                value: small
+              - label: none
+                value: none
+            default: default
+            hint: Amount of spacing after the section
+            required: false
+          - label: SpaceBefore
+            name: spaceBefore
+            widget: select
+            options:
+              - label: default
+                value: default
+              - label: small
+                value: small
+              - label: none
+                value: none
+            default: default
+            hint: Amount of spacing before the section
+            required: false
+          - label: Spotlight
+            name: spotlight
+            widget: boolean
+            hint: Show spotlight behind cursor
+            required: false
+          - label: Style
+            name: style
+            widget: select
+            options:
+              - label: stagelights
+                value: stagelights
+              - label: horizontalGradient
+                value: horizontalGradient
+              - label: verticalGradient
+                value: verticalGradient
+              - label: accentTransition
+                value: accentTransition
+              - label: boldTransition
+                value: boldTransition
+              - label: symmetricGlow
+                value: symmetricGlow
+              - label: anchorGlow
+                value: anchorGlow
+            default: default
+            hint: Style of background
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: section
+          - label: Width
+            name: width
+            widget: select
+            options:
+              - label: full
+                value: full
+              - label: max
+                value: max
+              - label: wide
+                value: wide
+              - label: default
+                value: default
+              - label: narrow
+                value: narrow
+            default: default
+            hint: Width of section to use
+            required: false
+          - label: Content
+            name: content
+            widget: object
+            fields:
+              - label: Align
+                name: align
+                widget: select
+                options:
+                  - label: left
+                    value: left
+                  - label: center
+                    value: center
+                  - label: right
+                    value: right
+                default: center
+                hint: Choose an alignment for the content
+                required: false
+              - label: Gutter
+                name: gutter
+                widget: select
+                options:
+                  - label: large
+                    value: large
+                  - label: default
+                    value: default
+                  - label: small
+                    value: small
+                  - label: none
+                    value: none
+                default: default
+                hint: Size of gutter to use
+                required: false
+              - label: Mode
+                name: mode
+                widget: select
+                options:
+                  - label: default
+                    value: default
+                  - label: tile
+                    value: tile
+                  - label: list
+                    value: list
+                  - label: slider
+                    value: slider
+                default: default
+                hint: Layout mode used for section contents
+                required: false
+              - label: TileWidth
+                name: tileWidth
+                widget: select
+                options:
+                  - label: smallest
+                    value: smallest
+                  - label: default
+                    value: default
+                  - label: medium
+                    value: medium
+                  - label: large
+                    value: large
+                  - label: largest
+                    value: largest
+                default: default
+                hint: Set min-width for the tiles in the grid
+                required: false
+              - label: Width
+                name: width
+                widget: select
+                options:
+                  - label: unset
+                    value: unset
+                  - label: narrow
+                    value: narrow
+                  - label: default
+                    value: default
+                  - label: wide
+                    value: wide
+                default: unset
+                hint: Width of content to use
+                required: false
+            collapsed: true
+            required: false
+          - label: Headline
+            name: headline
+            widget: object
+            fields:
+              - label: Align
+                name: align
+                widget: select
+                options:
+                  - label: left
+                    value: left
+                  - label: center
+                    value: center
+                  - label: right
+                    value: right
+                hint: Choose an alignment for positioning the headline
+                required: false
+              - label: Large
+                name: large
+                widget: boolean
+                hint: Make the headline larger
+                required: false
+              - label: Sub
+                name: sub
+                widget: markdown
+                hint: Subheadline for the section
+                required: false
+              - label: SwitchOrder
+                name: switchOrder
+                widget: boolean
+                hint: Switch the order of headline and subheadline
+                required: false
+              - label: Text
+                name: text
+                widget: markdown
+                hint: Headline Text for the section
+                required: false
+              - label: TextAlign
+                name: textAlign
+                widget: select
+                options:
+                  - label: left
+                    value: left
+                  - label: center
+                    value: center
+                  - label: right
+                    value: right
+                hint: Choose the text alignment for the headline
+                required: false
+              - label: Width
+                name: width
+                widget: select
+                options:
+                  - label: unset
+                    value: unset
+                  - label: narrow
+                    value: narrow
+                  - label: default
+                    value: default
+                  - label: wide
+                    value: wide
+                default: unset
+                hint: Width of headline to use
+                required: false
+            collapsed: true
+            required: false
+          - label: Buttons
+            name: buttons
+            widget: list
+            hint: Abstracts a page concept into JSON schema
+            required: false
+            fields:
+              - label: Disabled
+                name: disabled
+                widget: boolean
+                hint: Whether the button should be disabled
+                required: false
+              - label: Icon
+                name: icon
+                widget: string
+                hint: Choose an icon
+                required: false
+              - label: Label
+                name: label
+                widget: string
+                hint: Text content to display inside the button
+                required: false
+              - label: Size
+                name: size
+                widget: select
+                options:
+                  - label: small
+                    value: small
+                  - label: medium
+                    value: medium
+                  - label: large
+                    value: large
+                default: medium
+                hint: Size of button to use
+                required: false
+              - label: Target
+                name: target
+                widget: string
+                hint: >-
+                  Target that should be linked, makes the button behave like a
+                  link semantically
+                required: false
+              - label: Type
+                name: type
+                widget: hidden
+                description: Internal type for interface resolution
+                default: button
+              - label: Variant
+                name: variant
+                widget: select
+                options:
+                  - label: primary
+                    value: primary
+                  - label: secondary
+                    value: secondary
+                  - label: tertiary
+                    value: tertiary
+                default: secondary
+                hint: Variant of button to be used
+                required: false
+          - name: components
+            widget: list
+            types:
+              - label: Cta
+                name: cta
+                widget: object
+                fields:
+                  - label: Headline
+                    name: headline
+                    widget: markdown
+                    hint: Headline for the Component element
+                    required: false
+                  - label: HighlightText
+                    name: highlightText
+                    widget: boolean
+                    hint: Visually highlight the text
+                    required: false
+                  - label: Sub
+                    name: sub
+                    widget: markdown
+                    hint: Subheadline below the component headline
+                    required: false
+                  - label: Text
+                    name: text
+                    widget: markdown
+                    hint: Info text for the component element
+                    required: false
+                  - label: TextAlign
+                    name: textAlign
+                    widget: select
+                    options:
+                      - label: left
+                        value: left
+                      - label: center
+                        value: center
+                    default: left
+                    hint: Choose the alginment of the text
+                    required: false
+                  - label: Type
+                    name: type
+                    widget: hidden
+                    description: Internal type for interface resolution
+                    default: cta
+                  - label: Buttons
+                    name: buttons
+                    widget: list
+                    hint: Abstracts a page concept into JSON schema
+                    required: false
+                    fields:
+                      - label: Icon
+                        name: icon
+                        widget: string
+                        hint: Choose an icon
+                        required: false
+                      - label: Label
+                        name: label
+                        widget: string
+                        hint: Text content to display inside the button
+                        required: false
+                      - label: Target
+                        name: target
+                        widget: string
+                        hint: >-
+                          Target that should be linked, makes the button behave
+                          like a link semantically
+                        required: false
+                collapsed: true
+                hint: Cta
+                required: false
+              - label: Faq
+                name: faq
+                widget: object
+                fields:
+                  - label: Type
+                    name: type
+                    widget: hidden
+                    description: Internal type for interface resolution
+                    default: faq
+                  - label: Questions
+                    name: questions
+                    widget: list
+                    hint: Abstracts a page concept into JSON schema
+                    required: false
+                    fields:
+                      - label: Answer
+                        name: answer
+                        widget: markdown
+                        hint: The answer to the question
+                        required: false
+                      - label: Question
+                        name: question
+                        widget: markdown
+                        hint: The question
+                        required: false
+                collapsed: true
+                hint: Component used to display a Faq section
+                required: false
+              - label: Features
+                name: features
+                widget: object
+                fields:
+                  - label: Layout
+                    name: layout
+                    widget: select
+                    options:
+                      - label: largeTiles
+                        value: largeTiles
+                      - label: smallTiles
+                        value: smallTiles
+                      - label: list
+                        value: list
+                    default: largeTiles
+                    hint: The layout variant to use for the features
+                    required: false
+                  - label: Style
+                    name: style
+                    widget: select
+                    options:
+                      - label: intext
+                        value: intext
+                      - label: stack
+                        value: stack
+                      - label: centered
+                        value: centered
+                      - label: besideLarge
+                        value: besideLarge
+                      - label: besideSmall
+                        value: besideSmall
+                    default: stack
+                    required: false
+                  - label: Type
+                    name: type
+                    widget: hidden
+                    description: Internal type for interface resolution
+                    default: features
+                  - label: Ctas
+                    name: ctas
+                    widget: object
+                    fields:
+                      - label: Style
+                        name: style
+                        widget: select
+                        options:
+                          - label: button
+                            value: button
+                          - label: link
+                            value: link
+                          - label: intext
+                            value: intext
+                        default: link
+                        required: false
+                      - label: Toggle
+                        name: toggle
+                        widget: boolean
+                        default: true
+                        hint: Activate/disable the CTAs
+                        required: false
+                    collapsed: true
+                    required: false
+                  - label: Feature
+                    name: feature
+                    widget: list
+                    hint: Abstracts a page concept into JSON schema
+                    required: false
+                    fields:
+                      - label: Icon
+                        name: icon
+                        widget: string
+                        hint: The icon for the feature
+                        required: false
+                      - label: Style
+                        name: style
+                        widget: select
+                        options:
+                          - label: intext
+                            value: intext
+                          - label: stack
+                            value: stack
+                          - label: centered
+                            value: centered
+                          - label: besideLarge
+                            value: besideLarge
+                          - label: besideSmall
+                            value: besideSmall
+                        default: stack
+                        required: false
+                      - label: Text
+                        name: text
+                        widget: string
+                        hint: The description of the feature
+                        required: false
+                      - label: Title
+                        name: title
+                        widget: string
+                        hint: The title of the feature
+                        required: false
+                      - label: Type
+                        name: type
+                        widget: hidden
+                        description: Internal type for interface resolution
+                        default: feature
+                      - label: Cta
+                        name: cta
+                        widget: object
+                        fields:
+                          - label: Label
+                            name: label
+                            widget: string
+                            default: See more
+                            hint: The text label displayed on the link
+                            required: false
+                          - label: Style
+                            name: style
+                            widget: select
+                            options:
+                              - label: button
+                                value: button
+                              - label: link
+                                value: link
+                              - label: intext
+                                value: intext
+                            default: link
+                            hint: Choose the style of the CTA
+                            required: false
+                          - label: Target
+                            name: target
+                            widget: string
+                            default: '#'
+                            hint: The CTA target
+                            required: false
+                          - label: Toggle
+                            name: toggle
+                            widget: boolean
+                            default: true
+                            hint: Activate/disable the CTAs
+                            required: false
+                        collapsed: true
+                        hint: The call to action
+                        required: false
+                collapsed: true
+                hint: Component used to display a set of features
+                required: false
+              - label: Gallery
+                name: gallery
+                widget: object
+                fields:
+                  - label: AspectRatio
+                    name: aspectRatio
+                    widget: select
+                    options:
+                      - label: unset
+                        value: unset
+                      - label: square
+                        value: square
+                      - label: wide
+                        value: wide
+                      - label: landscape
+                        value: landscape
+                    default: unset
+                    hint: The aspect ratio of the gallery images
+                    required: false
+                  - label: Layout
+                    name: layout
+                    widget: select
+                    options:
+                      - label: stack
+                        value: stack
+                      - label: smallTiles
+                        value: smallTiles
+                      - label: largeTiles
+                        value: largeTiles
+                    hint: The layout of the gallery images
+                    required: false
+                  - label: Lightbox
+                    name: lightbox
+                    widget: boolean
+                    hint: Display images in a lightbox gallery
+                    required: false
+                  - label: Type
+                    name: type
+                    widget: hidden
+                    description: Internal type for interface resolution
+                    default: gallery
+                  - label: Images
+                    name: images
+                    widget: list
+                    hint: Abstracts a page concept into JSON schema
+                    required: false
+                    fields:
+                      - label: Alt
+                        name: alt
+                        widget: string
+                        hint: Alt text of the image
+                        required: false
+                      - label: Caption
+                        name: caption
+                        widget: markdown
+                        hint: The caption of the image
+                        required: false
+                      - label: Src
+                        name: src
+                        widget: image
+                        hint: The source of the image
+                        required: false
+                collapsed: true
+                hint: Component used to display a gallery of images
+                required: false
+              - label: Image Text
+                name: image-text
+                widget: object
+                fields:
+                  - label: HighlightText
+                    name: highlightText
+                    widget: boolean
+                    hint: Visually highlight the text
+                    required: false
+                  - label: Layout
+                    name: layout
+                    widget: select
+                    options:
+                      - label: above
+                        value: above
+                      - label: below
+                        value: below
+                      - label: beside-right
+                        value: beside_right
+                      - label: beside-left
+                        value: beside_left
+                    hint: Position of the image relative to the text
+                    required: false
+                  - label: Text
+                    name: text
+                    widget: markdown
+                    hint: Text content to display beside the image
+                    required: false
+                  - label: Type
+                    name: type
+                    widget: hidden
+                    description: Internal type for interface resolution
+                    default: image-text
+                  - label: Image
+                    name: image
+                    widget: object
+                    fields:
+                      - label: Alt
+                        name: alt
+                        widget: string
+                        hint: Alt text of the image
+                        required: false
+                      - label: Src
+                        name: src
+                        widget: image
+                        hint: URL of the image to display
+                        required: false
+                    collapsed: true
+                    required: false
+                collapsed: true
+                hint: >-
+                  Component used to display an image beside or above/below a
+                  text block
+                required: false
+              - label: Logos
+                name: logos
+                widget: object
+                fields:
+                  - label: Align
+                    name: align
+                    widget: select
+                    options:
+                      - label: left
+                        value: left
+                      - label: center
+                        value: center
+                    default: center
+                    hint: The alignment of the logo layout
+                    required: false
+                  - label: Tagline
+                    name: tagline
+                    widget: string
+                    hint: A short tagline atop the logos
+                    required: false
+                  - label: Type
+                    name: type
+                    widget: hidden
+                    description: Internal type for interface resolution
+                    default: logos
+                  - label: Cta
+                    name: cta
+                    widget: object
+                    fields:
+                      - label: Label
+                        name: label
+                        widget: string
+                        hint: The text label displayed on the link
+                        required: false
+                      - label: Link
+                        name: link
+                        widget: string
+                        default: '#'
+                        hint: The CTA link
+                        required: false
+                      - label: Style
+                        name: style
+                        widget: select
+                        options:
+                          - label: button
+                            value: button
+                          - label: text
+                            value: text
+                        default: text
+                        required: false
+                      - label: Text
+                        name: text
+                        widget: markdown
+                        hint: A short CTA text
+                        required: false
+                      - label: Toggle
+                        name: toggle
+                        widget: boolean
+                        hint: Activate/disable the CTA
+                        required: false
+                    collapsed: true
+                    hint: The call to action
+                    required: false
+                  - label: Logo
+                    name: logo
+                    widget: list
+                    hint: Abstracts a page concept into JSON schema
+                    required: false
+                    fields:
+                      - label: Alt
+                        name: alt
+                        widget: string
+                        hint: The alt text of the logo
+                        required: false
+                      - label: Src
+                        name: src
+                        widget: image
+                        hint: The URL of the logo image
+                        required: false
+                      - label: Type
+                        name: type
+                        widget: hidden
+                        description: Internal type for interface resolution
+                        default: logo
+                collapsed: true
+                hint: Component used to display a set of logos
+                required: true
+              - label: Stats
+                name: stats
+                widget: object
+                fields:
+                  - label: Type
+                    name: type
+                    widget: hidden
+                    description: Internal type for interface resolution
+                    default: stats
+                  - label: Stat
+                    name: stat
+                    widget: list
+                    hint: Abstracts a page concept into JSON schema
+                    required: false
+                    fields:
+                      - label: Description
+                        name: description
+                        widget: markdown
+                        hint: Optional description of the stat
+                        required: false
+                      - label: Number
+                        name: number
+                        widget: number
+                        valueType: int
+                        hint: The number of the stat
+                        required: false
+                      - label: Title
+                        name: title
+                        widget: markdown
+                        hint: Title of the stat
+                        required: false
+                      - label: Type
+                        name: type
+                        widget: hidden
+                        description: Internal type for interface resolution
+                        default: stat
+                collapsed: true
+                hint: Display a set of stats in a grid
+                required: true
+              - label: Teaser Card
+                name: teaser-card
+                widget: object
+                fields:
+                  - label: Headline
+                    name: headline
+                    widget: markdown
+                    hint: Headline for the teaser card
+                    required: false
+                  - label: Image
+                    name: image
+                    widget: image
+                    hint: Image to display as cover
+                    required: false
+                  - label: ImageRatio
+                    name: imageRatio
+                    widget: select
+                    options:
+                      - label: wide
+                        value: wide
+                      - label: landscape
+                        value: landscape
+                      - label: square
+                        value: square
+                      - label: unset
+                        value: unset
+                    default: wide
+                    hint: Aspect ratio of the image
+                    required: false
+                  - label: Label
+                    name: label
+                    widget: string
+                    hint: Label for the Teaser Card
+                    required: false
+                  - label: Layout
+                    name: layout
+                    widget: select
+                    options:
+                      - label: stack
+                        value: stack
+                      - label: row
+                        value: row
+                    default: stack
+                    hint: Layout for the Teaser Card
+                    required: false
+                  - label: Target
+                    name: target
+                    widget: string
+                    hint: Target that should be linked
+                    required: false
+                  - label: Text
+                    name: text
+                    widget: markdown
+                    hint: Body text for the teaser card
+                    required: false
+                  - label: Type
+                    name: type
+                    widget: hidden
+                    description: Internal type for interface resolution
+                    default: teaser-card
+                  - label: Button
+                    name: button
+                    widget: object
+                    fields:
+                      - label: Chevron
+                        name: chevron
+                        widget: boolean
+                        hint: Toggle arrow icon
+                        required: false
+                      - label: Hidden
+                        name: hidden
+                        widget: boolean
+                        hint: >-
+                          Toggle wether you want the card to have a visible
+                          button or not
+                        required: false
+                      - label: Label
+                        name: label
+                        widget: string
+                        hint: >-
+                          Label of the button. Still A11Y relevant when the
+                          button is hidden.
+                        required: false
+                    collapsed: true
+                    required: false
+                collapsed: true
+                hint: Component used to tease content
+                required: false
+              - label: Testimonials
+                name: testimonials
+                widget: object
+                fields:
+                  - label: Type
+                    name: type
+                    widget: hidden
+                    description: Internal type for interface resolution
+                    default: testimonials
+                  - label: Testimonial
+                    name: testimonial
+                    widget: list
+                    hint: Abstracts a page concept into JSON schema
+                    required: false
+                    fields:
+                      - label: Name
+                        name: name
+                        widget: string
+                        hint: The name of the quote author
+                        required: false
+                      - label: Quote
+                        name: quote
+                        widget: markdown
+                        hint: The testimonial quote
+                        required: false
+                      - label: Title
+                        name: title
+                        widget: string
+                        hint: The title of the quote author
+                        required: false
+                      - label: Type
+                        name: type
+                        widget: hidden
+                        description: Internal type for interface resolution
+                        default: testimonial
+                      - label: Image
+                        name: image
+                        widget: object
+                        fields:
+                          - label: Alt
+                            name: alt
+                            widget: string
+                            hint: The alt text of the image file
+                            required: false
+                          - label: Src
+                            name: src
+                            widget: image
+                            hint: The image to display with the testimonial
+                            required: false
+                        collapsed: true
+                        required: false
+                collapsed: true
+                hint: Display testimonials with an optional image and rating
+                required: false
+              - label: Text
+                name: text
+                widget: object
+                fields:
+                  - label: Align
+                    name: align
+                    widget: select
+                    options:
+                      - label: left
+                        value: left
+                      - label: center
+                        value: center
+                    default: left
+                    hint: Alignment of text
+                    required: false
+                  - label: HighlightText
+                    name: highlightText
+                    widget: boolean
+                    hint: Visually highlight the text
+                    required: false
+                  - label: Layout
+                    name: layout
+                    widget: select
+                    options:
+                      - label: singleColumn
+                        value: singleColumn
+                      - label: multiColumn
+                        value: multiColumn
+                    default: singleColumn
+                    hint: Variant of layout to be used
+                    required: false
+                  - label: Text
+                    name: text
+                    widget: markdown
+                    hint: Text
+                    required: false
+                  - label: Type
+                    name: type
+                    widget: hidden
+                    description: Internal type for interface resolution
+                    default: text
+                collapsed: true
+                hint: Component used for displaying text in chapters
+                required: true
+            hint: Abstracts a page concept into JSON schema
+            required: false
+  - name: seo
+    label: Seo
+    description: Seo consisting of general configuration options for the page
+    extension: md
+    format: yaml-frontmatter
+    files:
+      - name: cardImage
+        file: content/settings/cardImage.md
+        label: CardImage
+      - name: description
+        file: content/settings/description.md
+        label: Description
+      - name: image
+        file: content/settings/image.md
+        label: Image
+      - name: keywords
+        file: content/settings/keywords.md
+        label: Keywords
+      - name: title
+        file: content/settings/title.md
+        label: Title
+      - name: type
+        file: content/settings/type.md
+        label: Type
+  - name: blog-overview
+    label: Blog-overview
+    description: Blog-overview consisting of general configuration options for the page
+    extension: md
+    format: yaml-frontmatter
+    files:
+      - name: type
+        file: content/settings/type.md
+        label: Type
+      - name: cta
+        file: content/settings/cta.md
+        label: Cta
+        fields:
+          - label: Headline
+            name: headline
+            widget: markdown
+            hint: Headline for the Component element
+            required: false
+          - label: HighlightText
+            name: highlightText
+            widget: boolean
+            hint: Visually highlight the text
+            required: false
+          - label: Sub
+            name: sub
+            widget: markdown
+            hint: Subheadline below the component headline
+            required: false
+          - label: Text
+            name: text
+            widget: markdown
+            hint: Info text for the component element
+            required: false
+          - label: TextAlign
+            name: textAlign
+            widget: select
+            options:
+              - label: left
+                value: left
+              - label: center
+                value: center
+            default: left
+            hint: Choose the alginment of the text
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: cta
+          - label: Buttons
+            name: buttons
+            widget: list
+            hint: Abstracts a blog overview concept into JSON schema
+            required: false
+            fields:
+              - label: Icon
+                name: icon
+                widget: string
+                hint: Choose an icon
+                required: false
+              - label: Label
+                name: label
+                widget: string
+                hint: Text content to display inside the button
+                required: false
+              - label: Target
+                name: target
+                widget: string
+                hint: >-
+                  Target that should be linked, makes the button behave like a
+                  link semantically
+                required: false
+      - name: latest
+        file: content/settings/latest.md
+        label: Latest
+        fields:
+          - label: Date
+            name: date
+            widget: string
+            hint: The date of the blog post
+            required: false
+          - label: Headline
+            name: headline
+            widget: markdown
+            hint: The headline of the blog post
+            required: false
+          - label: Image
+            name: image
+            widget: image
+            hint: The preview image for the blog post
+            required: false
+          - label: ReadingTime
+            name: readingTime
+            widget: string
+            hint: Time to read for the blog post
+            required: false
+          - label: TeaserText
+            name: teaserText
+            widget: markdown
+            hint: The teaser text of the blog post
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: blog-teaser
+          - label: Author
+            name: author
+            widget: object
+            fields:
+              - label: Image
+                name: image
+                widget: image
+                hint: The image URL of the author
+                required: false
+              - label: Name
+                name: name
+                widget: string
+                hint: The name of the author
+                required: false
+              - label: Title
+                name: title
+                widget: string
+                hint: The title of the author
+                required: false
+            collapsed: true
+            hint: The author of the blog post
+            required: false
+          - label: Link
+            name: link
+            widget: object
+            fields:
+              - label: Label
+                name: label
+                widget: string
+                default: Read more
+                hint: The label to use for the link
+                required: false
+              - label: Url
+                name: url
+                widget: string
+                hint: The blog entry URL to link
+                required: false
+            collapsed: true
+            hint: URL and label for the blog post linked
+            required: false
+          - label: Tags
+            name: tags
+            widget: list
+            hint: Abstracts a blog overview concept into JSON schema
+            required: false
+      - name: seo
+        file: content/settings/seo.md
+        label: Seo
+        fields:
+          - label: CardImage
+            name: cardImage
+            widget: string
+            hint: Card preview image (larger, e.g. Twitter) used for the page
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            hint: Description used for the page
+            required: false
+          - label: Image
+            name: image
+            widget: image
+            hint: Preview image used for the page
+            required: false
+          - label: Keywords
+            name: keywords
+            widget: string
+            hint: Keywords used for the page
+            required: false
+          - label: Title
+            name: title
+            widget: string
+            hint: Title used for the page
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: seo
+      - name: list
+        file: content/settings/list.md
+        label: List
+        fields:
+          - label: Date
+            name: date
+            widget: string
+            hint: The date of the blog post
+            required: false
+          - label: Headline
+            name: headline
+            widget: markdown
+            hint: The headline of the blog post
+            required: false
+          - label: Image
+            name: image
+            widget: image
+            hint: The preview image for the blog post
+            required: false
+          - label: ReadingTime
+            name: readingTime
+            widget: string
+            hint: Time to read for the blog post
+            required: false
+          - label: TeaserText
+            name: teaserText
+            widget: markdown
+            hint: The teaser text of the blog post
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: blog-teaser
+          - label: Author
+            name: author
+            widget: object
+            fields:
+              - label: Image
+                name: image
+                widget: image
+                hint: The image URL of the author
+                required: false
+              - label: Name
+                name: name
+                widget: string
+                hint: The name of the author
+                required: false
+              - label: Title
+                name: title
+                widget: string
+                hint: The title of the author
+                required: false
+            collapsed: true
+            hint: The author of the blog post
+            required: false
+          - label: Link
+            name: link
+            widget: object
+            fields:
+              - label: Label
+                name: label
+                widget: string
+                default: Read more
+                hint: The label to use for the link
+                required: false
+              - label: Url
+                name: url
+                widget: string
+                hint: The blog entry URL to link
+                required: false
+            collapsed: true
+            hint: URL and label for the blog post linked
+            required: false
+          - label: Tags
+            name: tags
+            widget: list
+            hint: Abstracts a blog overview concept into JSON schema
+            required: false
+      - name: more
+        file: content/settings/more.md
+        label: More
+        fields:
+          - label: Date
+            name: date
+            widget: string
+            hint: The date of the blog post
+            required: false
+          - label: Headline
+            name: headline
+            widget: markdown
+            hint: The headline of the blog post
+            required: false
+          - label: Image
+            name: image
+            widget: image
+            hint: The preview image for the blog post
+            required: false
+          - label: ReadingTime
+            name: readingTime
+            widget: string
+            hint: Time to read for the blog post
+            required: false
+          - label: TeaserText
+            name: teaserText
+            widget: markdown
+            hint: The teaser text of the blog post
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: blog-teaser
+          - label: Author
+            name: author
+            widget: object
+            fields:
+              - label: Image
+                name: image
+                widget: image
+                hint: The image URL of the author
+                required: false
+              - label: Name
+                name: name
+                widget: string
+                hint: The name of the author
+                required: false
+              - label: Title
+                name: title
+                widget: string
+                hint: The title of the author
+                required: false
+            collapsed: true
+            hint: The author of the blog post
+            required: false
+          - label: Link
+            name: link
+            widget: object
+            fields:
+              - label: Label
+                name: label
+                widget: string
+                default: Read more
+                hint: The label to use for the link
+                required: false
+              - label: Url
+                name: url
+                widget: string
+                hint: The blog entry URL to link
+                required: false
+            collapsed: true
+            hint: URL and label for the blog post linked
+            required: false
+          - label: Tags
+            name: tags
+            widget: list
+            hint: Abstracts a blog overview concept into JSON schema
+            required: false
+  - name: footer
+    label: Footer
+    description: Footer consisting of general configuration options for the page
+    extension: md
+    format: yaml-frontmatter
+    files:
+      - name: logoHref
+        file: content/settings/logoHref.md
+        label: LogoHref
+      - name: type
+        file: content/settings/type.md
+        label: Type
+      - name: logo
+        file: content/settings/logo.md
+        label: Logo
+        fields:
+          - label: Alt
+            name: alt
+            widget: string
+            hint: Alt text to display for picture
+            required: false
+          - label: Height
+            name: height
+            widget: number
+            valueType: int
+            hint: Height of the picture
+            required: false
+          - label: Src
+            name: src
+            widget: image
+            hint: Picture source
+            required: false
+          - label: Width
+            name: width
+            widget: number
+            valueType: int
+            hint: Width of the picture
+            required: false
+      - name: navItems
+        file: content/settings/navItems.md
+        label: NavItems
+        fields:
+          - label: Href
+            name: href
+            widget: string
+            required: false
+          - label: Label
+            name: label
+            widget: string
+            required: false
+          - label: Target
+            name: target
+            widget: string
+            required: false
+  - name: header
+    label: Header
+    description: Header consisting of general configuration options for the page
+    extension: md
+    format: yaml-frontmatter
+    files:
+      - name: floating
+        file: content/settings/floating.md
+        label: Floating
+      - name: logoHref
+        file: content/settings/logoHref.md
+        label: LogoHref
+      - name: type
+        file: content/settings/type.md
+        label: Type
+      - name: logo
+        file: content/settings/logo.md
+        label: Logo
+        fields:
+          - label: Alt
+            name: alt
+            widget: string
+            hint: Alt text to display for picture
+            required: false
+          - label: Height
+            name: height
+            widget: number
+            valueType: int
+            hint: Height of the picture
+            required: false
+          - label: Src
+            name: src
+            widget: image
+            hint: Picture source
+            required: false
+          - label: Width
+            name: width
+            widget: number
+            valueType: int
+            hint: Width of the picture
+            required: false
+      - name: navItems
+        file: content/settings/navItems.md
+        label: NavItems
+        fields:
+          - label: Href
+            name: href
+            widget: string
+            required: false
+          - label: Label
+            name: label
+            widget: string
+            required: false
+  - name: settings
+    label: Settings
+    description: Settings consisting of general configuration options for the page
+    extension: md
+    format: yaml-frontmatter
+    files:
+      - name: type
+        file: content/settings/type.md
+        label: Type
+      - name: footer
+        file: content/settings/footer.md
+        label: Footer
+        fields:
+          - label: LogoHref
+            name: logoHref
+            widget: string
+            default: /
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: footer
+          - label: Logo
+            name: logo
+            widget: object
+            fields:
+              - label: Alt
+                name: alt
+                widget: string
+                hint: Alt text to display for picture
+                required: false
+              - label: Height
+                name: height
+                widget: number
+                valueType: int
+                hint: Height of the picture
+                required: false
+              - label: Src
+                name: src
+                widget: image
+                hint: Picture source
+                required: false
+              - label: Width
+                name: width
+                widget: number
+                valueType: int
+                hint: Width of the picture
+                required: false
+            collapsed: true
+            hint: Logo
+            required: false
+          - label: NavItems
+            name: navItems
+            widget: list
+            hint: Abstracts global settings made for a website into JSON Schema
+            required: false
+            fields:
+              - label: Href
+                name: href
+                widget: string
+                required: false
+              - label: Label
+                name: label
+                widget: string
+                required: false
+              - label: Target
+                name: target
+                widget: string
+                required: false
+      - name: header
+        file: content/settings/header.md
+        label: Header
+        fields:
+          - label: Floating
+            name: floating
+            widget: boolean
+            hint: Make the header float over the first Section
+            required: false
+          - label: LogoHref
+            name: logoHref
+            widget: string
+            default: /
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: header
+          - label: Logo
+            name: logo
+            widget: object
+            fields:
+              - label: Alt
+                name: alt
+                widget: string
+                hint: Alt text to display for picture
+                required: false
+              - label: Height
+                name: height
+                widget: number
+                valueType: int
+                hint: Height of the picture
+                required: false
+              - label: Src
+                name: src
+                widget: image
+                hint: Picture source
+                required: false
+              - label: Width
+                name: width
+                widget: number
+                valueType: int
+                hint: Width of the picture
+                required: false
+            collapsed: true
+            hint: Logo
+            required: false
+          - label: NavItems
+            name: navItems
+            widget: list
+            hint: Abstracts global settings made for a website into JSON Schema
+            required: false
+            fields:
+              - label: Href
+                name: href
+                widget: string
+                required: false
+              - label: Label
+                name: label
+                widget: string
+                required: false
+      - name: seo
+        file: content/settings/seo.md
+        label: Seo
+        fields:
+          - label: CardImage
+            name: cardImage
+            widget: string
+            hint: Card preview image (larger, e.g. Twitter) used for the page
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            hint: Description used for the page
+            required: false
+          - label: Image
+            name: image
+            widget: image
+            hint: Preview image used for the page
+            required: false
+          - label: Keywords
+            name: keywords
+            widget: string
+            hint: Keywords used for the page
+            required: false
+          - label: Title
+            name: title
+            widget: string
+            hint: Title used for the page
+            required: false
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: seo
