@@ -5,8 +5,6 @@ import { Section } from "@kickstartds/base/lib/section";
 
 export const DynamicComponent: React.FC<any> = (props) => {
   const modelName = props.type as string;
-
-  // Resolve component by content type
   if (!modelName) {
     throw new Error(
       `Object does not have a 'type' property: ${JSON.stringify(

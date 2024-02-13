@@ -3,10 +3,10 @@ backend:
   branch: main
 local_backend: true
 locale: en
-media_folder: static/images
+media_folder: public/images
 public_folder: /images
 publish_mode: editorial_workflow
-logo_url: https://example.com/logo.png
+logo_url: /logo.svg
 collections:
   - name: blog-posts
     label: Blog-posts
@@ -250,9 +250,9 @@ collections:
     delete: true
     identifier_field: title
     extension: md
-    slug: "{{fields.slug}}"
     editor:
       frame: false
+    slug: "{{fields.slug}}"
     fields:
       - label: Type
         name: type
@@ -1287,10 +1287,15 @@ collections:
     editor:
       frame: false
     files:
-      - name: cta
-        file: content/blog-overview/cta.md
-        label: Cta
+      - name: blog-overview
+        file: content/blog-overview.md
+        label: Blog-overview
         fields:
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: blog-overview
           - label: Cta
             name: cta
             widget: object
@@ -1357,10 +1362,6 @@ collections:
             collapsed: true
             hint: Cta
             required: false
-      - name: latest
-        file: content/blog-overview/latest.md
-        label: Latest
-        fields:
           - label: Latest
             name: latest
             widget: object
@@ -1445,10 +1446,6 @@ collections:
               Display a blog teaser with date, tags, headline, teaser text and
               author
             required: false
-      - name: seo
-        file: content/blog-overview/seo.md
-        label: Seo
-        fields:
           - label: Seo
             name: seo
             widget: object
@@ -1486,10 +1483,6 @@ collections:
             collapsed: true
             hint: Abstracts SEO settings for a website into JSON schema
             required: false
-      - name: list
-        file: content/blog-overview/list.md
-        label: List
-        fields:
           - label: List
             name: list
             widget: list
@@ -1571,10 +1564,6 @@ collections:
                 widget: list
                 hint: Abstracts a blog overview concept into JSON schema
                 required: false
-      - name: more
-        file: content/blog-overview/more.md
-        label: More
-        fields:
           - label: More
             name: more
             widget: list
@@ -1664,10 +1653,15 @@ collections:
     editor:
       frame: false
     files:
-      - name: footer
-        file: content/settings/footer.md
-        label: Footer
+      - name: settings
+        file: content/settings.md
+        label: Settings
         fields:
+          - label: Type
+            name: type
+            widget: hidden
+            description: Internal type for interface resolution
+            default: settings
           - label: Footer
             name: footer
             widget: object
@@ -1732,10 +1726,6 @@ collections:
             collapsed: true
             hint: Footer
             required: false
-      - name: header
-        file: content/settings/header.md
-        label: Header
-        fields:
           - label: Header
             name: header
             widget: object
@@ -1801,10 +1791,6 @@ collections:
             collapsed: true
             hint: Header
             required: false
-      - name: seo
-        file: content/settings/seo.md
-        label: Seo
-        fields:
           - label: Seo
             name: seo
             widget: object
