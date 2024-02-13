@@ -6,7 +6,7 @@ locale: en
 media_folder: static/images
 public_folder: /images
 publish_mode: editorial_workflow
-logo_url: /logo.svg
+logo_url: https://example.com/logo.png
 collections:
   - name: blog-posts
     label: Blog-posts
@@ -17,6 +17,8 @@ collections:
     delete: true
     identifier_field: title
     extension: md
+    editor:
+      frame: false
     slug: "{{fields.slug}}"
     fields:
       - label: Content
@@ -1276,4 +1278,567 @@ collections:
                 hint: Component used for displaying text in chapters
                 required: true
             hint: Abstracts a page concept into JSON schema
+            required: false
+  - name: blog-overview
+    label: Blog-overview
+    description: Blog-overview consisting of general configuration options for the page
+    extension: md
+    format: yaml-frontmatter
+    editor:
+      frame: false
+    files:
+      - name: cta
+        file: content/blog-overview/cta.md
+        label: Cta
+        fields:
+          - label: Cta
+            name: cta
+            widget: object
+            fields:
+              - label: Headline
+                name: headline
+                widget: markdown
+                hint: Headline for the Component element
+                required: false
+              - label: HighlightText
+                name: highlightText
+                widget: boolean
+                hint: Visually highlight the text
+                required: false
+              - label: Sub
+                name: sub
+                widget: markdown
+                hint: Subheadline below the component headline
+                required: false
+              - label: Text
+                name: text
+                widget: markdown
+                hint: Info text for the component element
+                required: false
+              - label: TextAlign
+                name: textAlign
+                widget: select
+                options:
+                  - label: left
+                    value: left
+                  - label: center
+                    value: center
+                default: left
+                hint: Choose the alginment of the text
+                required: false
+              - label: Type
+                name: type
+                widget: hidden
+                description: Internal type for interface resolution
+                default: cta
+              - label: Buttons
+                name: buttons
+                widget: list
+                hint: Abstracts a blog overview concept into JSON schema
+                required: false
+                fields:
+                  - label: Icon
+                    name: icon
+                    widget: string
+                    hint: Choose an icon
+                    required: false
+                  - label: Label
+                    name: label
+                    widget: string
+                    hint: Text content to display inside the button
+                    required: false
+                  - label: Target
+                    name: target
+                    widget: string
+                    hint: >-
+                      Target that should be linked, makes the button behave like
+                      a link semantically
+                    required: false
+            collapsed: true
+            hint: Cta
+            required: false
+      - name: latest
+        file: content/blog-overview/latest.md
+        label: Latest
+        fields:
+          - label: Latest
+            name: latest
+            widget: object
+            fields:
+              - label: Date
+                name: date
+                widget: string
+                hint: The date of the blog post
+                required: false
+              - label: Headline
+                name: headline
+                widget: markdown
+                hint: The headline of the blog post
+                required: false
+              - label: Image
+                name: image
+                widget: image
+                hint: The preview image for the blog post
+                required: false
+              - label: ReadingTime
+                name: readingTime
+                widget: string
+                hint: Time to read for the blog post
+                required: false
+              - label: TeaserText
+                name: teaserText
+                widget: markdown
+                hint: The teaser text of the blog post
+                required: false
+              - label: Type
+                name: type
+                widget: hidden
+                description: Internal type for interface resolution
+                default: blog-teaser
+              - label: Author
+                name: author
+                widget: object
+                fields:
+                  - label: Image
+                    name: image
+                    widget: image
+                    hint: The image URL of the author
+                    required: false
+                  - label: Name
+                    name: name
+                    widget: string
+                    hint: The name of the author
+                    required: false
+                  - label: Title
+                    name: title
+                    widget: string
+                    hint: The title of the author
+                    required: false
+                collapsed: true
+                hint: The author of the blog post
+                required: false
+              - label: Link
+                name: link
+                widget: object
+                fields:
+                  - label: Label
+                    name: label
+                    widget: string
+                    default: Read more
+                    hint: The label to use for the link
+                    required: false
+                  - label: Url
+                    name: url
+                    widget: string
+                    hint: The blog entry URL to link
+                    required: false
+                collapsed: true
+                hint: URL and label for the blog post linked
+                required: false
+              - label: Tags
+                name: tags
+                widget: list
+                hint: Abstracts a blog overview concept into JSON schema
+                required: false
+            collapsed: true
+            hint: >-
+              Display a blog teaser with date, tags, headline, teaser text and
+              author
+            required: false
+      - name: seo
+        file: content/blog-overview/seo.md
+        label: Seo
+        fields:
+          - label: Seo
+            name: seo
+            widget: object
+            fields:
+              - label: CardImage
+                name: cardImage
+                widget: string
+                hint: Card preview image (larger, e.g. Twitter) used for the page
+                required: false
+              - label: Description
+                name: description
+                widget: string
+                hint: Description used for the page
+                required: false
+              - label: Image
+                name: image
+                widget: image
+                hint: Preview image used for the page
+                required: false
+              - label: Keywords
+                name: keywords
+                widget: string
+                hint: Keywords used for the page
+                required: false
+              - label: Title
+                name: title
+                widget: string
+                hint: Title used for the page
+                required: false
+              - label: Type
+                name: type
+                widget: hidden
+                description: Internal type for interface resolution
+                default: seo
+            collapsed: true
+            hint: Abstracts SEO settings for a website into JSON schema
+            required: false
+      - name: list
+        file: content/blog-overview/list.md
+        label: List
+        fields:
+          - label: List
+            name: list
+            widget: list
+            hint: Abstracts a blog overview concept into JSON schema
+            required: false
+            fields:
+              - label: Date
+                name: date
+                widget: string
+                hint: The date of the blog post
+                required: false
+              - label: Headline
+                name: headline
+                widget: markdown
+                hint: The headline of the blog post
+                required: false
+              - label: Image
+                name: image
+                widget: image
+                hint: The preview image for the blog post
+                required: false
+              - label: ReadingTime
+                name: readingTime
+                widget: string
+                hint: Time to read for the blog post
+                required: false
+              - label: TeaserText
+                name: teaserText
+                widget: markdown
+                hint: The teaser text of the blog post
+                required: false
+              - label: Type
+                name: type
+                widget: hidden
+                description: Internal type for interface resolution
+                default: blog-teaser
+              - label: Author
+                name: author
+                widget: object
+                fields:
+                  - label: Image
+                    name: image
+                    widget: image
+                    hint: The image URL of the author
+                    required: false
+                  - label: Name
+                    name: name
+                    widget: string
+                    hint: The name of the author
+                    required: false
+                  - label: Title
+                    name: title
+                    widget: string
+                    hint: The title of the author
+                    required: false
+                collapsed: true
+                hint: The author of the blog post
+                required: false
+              - label: Link
+                name: link
+                widget: object
+                fields:
+                  - label: Label
+                    name: label
+                    widget: string
+                    default: Read more
+                    hint: The label to use for the link
+                    required: false
+                  - label: Url
+                    name: url
+                    widget: string
+                    hint: The blog entry URL to link
+                    required: false
+                collapsed: true
+                hint: URL and label for the blog post linked
+                required: false
+              - label: Tags
+                name: tags
+                widget: list
+                hint: Abstracts a blog overview concept into JSON schema
+                required: false
+      - name: more
+        file: content/blog-overview/more.md
+        label: More
+        fields:
+          - label: More
+            name: more
+            widget: list
+            hint: Abstracts a blog overview concept into JSON schema
+            required: false
+            fields:
+              - label: Date
+                name: date
+                widget: string
+                hint: The date of the blog post
+                required: false
+              - label: Headline
+                name: headline
+                widget: markdown
+                hint: The headline of the blog post
+                required: false
+              - label: Image
+                name: image
+                widget: image
+                hint: The preview image for the blog post
+                required: false
+              - label: ReadingTime
+                name: readingTime
+                widget: string
+                hint: Time to read for the blog post
+                required: false
+              - label: TeaserText
+                name: teaserText
+                widget: markdown
+                hint: The teaser text of the blog post
+                required: false
+              - label: Type
+                name: type
+                widget: hidden
+                description: Internal type for interface resolution
+                default: blog-teaser
+              - label: Author
+                name: author
+                widget: object
+                fields:
+                  - label: Image
+                    name: image
+                    widget: image
+                    hint: The image URL of the author
+                    required: false
+                  - label: Name
+                    name: name
+                    widget: string
+                    hint: The name of the author
+                    required: false
+                  - label: Title
+                    name: title
+                    widget: string
+                    hint: The title of the author
+                    required: false
+                collapsed: true
+                hint: The author of the blog post
+                required: false
+              - label: Link
+                name: link
+                widget: object
+                fields:
+                  - label: Label
+                    name: label
+                    widget: string
+                    default: Read more
+                    hint: The label to use for the link
+                    required: false
+                  - label: Url
+                    name: url
+                    widget: string
+                    hint: The blog entry URL to link
+                    required: false
+                collapsed: true
+                hint: URL and label for the blog post linked
+                required: false
+              - label: Tags
+                name: tags
+                widget: list
+                hint: Abstracts a blog overview concept into JSON schema
+                required: false
+  - name: settings
+    label: Settings
+    description: Settings consisting of general configuration options for the page
+    extension: md
+    format: yaml-frontmatter
+    editor:
+      frame: false
+    files:
+      - name: footer
+        file: content/settings/footer.md
+        label: Footer
+        fields:
+          - label: Footer
+            name: footer
+            widget: object
+            fields:
+              - label: LogoHref
+                name: logoHref
+                widget: string
+                default: /
+                required: false
+              - label: Type
+                name: type
+                widget: hidden
+                description: Internal type for interface resolution
+                default: footer
+              - label: Logo
+                name: logo
+                widget: object
+                fields:
+                  - label: Alt
+                    name: alt
+                    widget: string
+                    hint: Alt text to display for picture
+                    required: false
+                  - label: Height
+                    name: height
+                    widget: number
+                    valueType: int
+                    hint: Height of the picture
+                    required: false
+                  - label: Src
+                    name: src
+                    widget: image
+                    hint: Picture source
+                    required: false
+                  - label: Width
+                    name: width
+                    widget: number
+                    valueType: int
+                    hint: Width of the picture
+                    required: false
+                collapsed: true
+                hint: Logo
+                required: false
+              - label: NavItems
+                name: navItems
+                widget: list
+                hint: Abstracts global settings made for a website into JSON Schema
+                required: false
+                fields:
+                  - label: Href
+                    name: href
+                    widget: string
+                    required: false
+                  - label: Label
+                    name: label
+                    widget: string
+                    required: false
+                  - label: Target
+                    name: target
+                    widget: string
+                    required: false
+            collapsed: true
+            hint: Footer
+            required: false
+      - name: header
+        file: content/settings/header.md
+        label: Header
+        fields:
+          - label: Header
+            name: header
+            widget: object
+            fields:
+              - label: Floating
+                name: floating
+                widget: boolean
+                hint: Make the header float over the first Section
+                required: false
+              - label: LogoHref
+                name: logoHref
+                widget: string
+                default: /
+                required: false
+              - label: Type
+                name: type
+                widget: hidden
+                description: Internal type for interface resolution
+                default: header
+              - label: Logo
+                name: logo
+                widget: object
+                fields:
+                  - label: Alt
+                    name: alt
+                    widget: string
+                    hint: Alt text to display for picture
+                    required: false
+                  - label: Height
+                    name: height
+                    widget: number
+                    valueType: int
+                    hint: Height of the picture
+                    required: false
+                  - label: Src
+                    name: src
+                    widget: image
+                    hint: Picture source
+                    required: false
+                  - label: Width
+                    name: width
+                    widget: number
+                    valueType: int
+                    hint: Width of the picture
+                    required: false
+                collapsed: true
+                hint: Logo
+                required: false
+              - label: NavItems
+                name: navItems
+                widget: list
+                hint: Abstracts global settings made for a website into JSON Schema
+                required: false
+                fields:
+                  - label: Href
+                    name: href
+                    widget: string
+                    required: false
+                  - label: Label
+                    name: label
+                    widget: string
+                    required: false
+            collapsed: true
+            hint: Header
+            required: false
+      - name: seo
+        file: content/settings/seo.md
+        label: Seo
+        fields:
+          - label: Seo
+            name: seo
+            widget: object
+            fields:
+              - label: CardImage
+                name: cardImage
+                widget: string
+                hint: Card preview image (larger, e.g. Twitter) used for the page
+                required: false
+              - label: Description
+                name: description
+                widget: string
+                hint: Description used for the page
+                required: false
+              - label: Image
+                name: image
+                widget: image
+                hint: Preview image used for the page
+                required: false
+              - label: Keywords
+                name: keywords
+                widget: string
+                hint: Keywords used for the page
+                required: false
+              - label: Title
+                name: title
+                widget: string
+                hint: Title used for the page
+                required: false
+              - label: Type
+                name: type
+                widget: hidden
+                description: Internal type for interface resolution
+                default: seo
+            collapsed: true
+            hint: Abstracts SEO settings for a website into JSON schema
             required: false

@@ -2,12 +2,15 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { PageProps as DsaPageProps } from "@kickstartds/ds-agency/index";
 import fg from "fast-glob";
 import { DynamicComponent } from "@/components/ComponentMap";
+import { ReactElement } from "react";
+import { NextPageWithLayout } from "./_app";
+import Layout from "@/components/Layout";
 
 type PageProps = {
   content: { attributes: DsaPageProps };
 };
 
-const Page: NextPage<PageProps> = ({ content }) => {
+const Page: NextPageWithLayout<PageProps> = ({ content }) => {
   const { attributes } = content;
   const { section } = attributes;
   return (
@@ -19,6 +22,10 @@ const Page: NextPage<PageProps> = ({ content }) => {
       </main>
     </>
   );
+};
+
+Page.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Page;
