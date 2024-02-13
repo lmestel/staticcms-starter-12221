@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { PageProps as DsaPageProps } from "@kickstartds/ds-agency/index";
 import fg from "fast-glob";
+import { DynamicComponent } from "@/components/ComponentMap";
 
 type PageProps = {
   content: { attributes: DsaPageProps };
@@ -8,7 +9,16 @@ type PageProps = {
 
 const Page: NextPage<PageProps> = ({ content }) => {
   const { attributes } = content;
-  return null;
+  const { section } = attributes;
+  return (
+    <>
+      <main>
+        {section?.map((section) => (
+          <DynamicComponent {...section} />
+        ))}
+      </main>
+    </>
+  );
 };
 
 export default Page;

@@ -1,8 +1,11 @@
 ---
 type: page
 title: Components
-sections:
+section:
   - type: section
+    headline:
+      text: Lorem
+      sub: Ipsum
     width: default
     style: default
     backgroundColor: default
