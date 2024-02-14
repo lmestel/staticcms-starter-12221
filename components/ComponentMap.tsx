@@ -24,17 +24,17 @@ export const DynamicComponent: React.FC<any> = (props) => {
 };
 
 export const components: Record<string, any> = {
-  blog_teaser: dynamic(() =>
+  "blog-teaser": dynamic(() =>
     import("@kickstartds/ds-agency/blog-teaser").then(
       (mod) => mod.BlogTeaserContextDefault
     )
   ),
-  blog_aside: dynamic(() =>
+  "blog-aside": dynamic(() =>
     import("@kickstartds/ds-agency/blog-aside").then(
       (mod) => mod.BlogAsideContextDefault
     )
   ),
-  blog_head: dynamic(() =>
+  "blog-head": dynamic(() =>
     import("@kickstartds/ds-agency/blog-head").then(
       (mod) => mod.BlogHeadContextDefault
     )
@@ -75,7 +75,7 @@ export const components: Record<string, any> = {
   stat: dynamic(() =>
     import("@kickstartds/ds-agency/stat").then((mod) => mod.StatContextDefault)
   ),
-  teaser_card: dynamic(() =>
+  "teaser-card": dynamic(() =>
     import("@kickstartds/ds-agency/teaser-card").then((mod) => mod.TeaserCard)
   ),
   testimonials: dynamic(() =>
@@ -91,7 +91,7 @@ export const components: Record<string, any> = {
   text: dynamic(() =>
     import("@kickstartds/ds-agency/text").then((mod) => mod.TextContextDefault)
   ),
-  image_text: dynamic(() =>
+  "image-text": dynamic(() =>
     import("@kickstartds/ds-agency/image-text").then(
       (mod) => mod.ImageTextContextDefault
     )
