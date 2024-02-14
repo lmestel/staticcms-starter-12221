@@ -1,7 +1,7 @@
 ---
 type: settings
 footer:
-  logoHref: /home
+  logoHref: /
   type: footer
   navItems:
     - href: "#home"
@@ -12,10 +12,11 @@ footer:
       label: Services
     - href: "#showcases"
       label: Showcases
-    - href: "#blog"
+    - href: /blog
       label: Blog
-    - href: "#storybook"
+    - href: https://storybook.design-system.agency/
       label: Storybook
+      target: _blank
   logo:
     src: /images/logo.svg
 header:
@@ -33,9 +34,9 @@ header:
       label: Services
     - href: "#showcases"
       label: Showcases
-    - href: "#blog"
+    - href: /blog
       label: Blog
-    - href: "#storybook"
+    - href: https://storybook.design-system.agency/
       label: Storybook
 seo:
   type: seo
