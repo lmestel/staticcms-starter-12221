@@ -75,4 +75,14 @@ section:
         layout: above
         image:
           src: /images/comp_audio01.jpg
+      - type: image-text
+        highlightText: false
+        layout: above
+        image:
+          src: /images/comp_audio02.jpg
+      - type: image-text
+        highlightText: false
+        image:
+          src: /images/comp_audio03.jpg
+        layout: above
 ---
