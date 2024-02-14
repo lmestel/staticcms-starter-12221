@@ -27,13 +27,20 @@ section:
         sub: |
           Impossible!
         headline: "\n\n\n"
+      - type: image-text
+        highlightText: true
+        image:
+          src: /images/comp_eco01.jpg
+        layout: above
+        text: |
+          Text
     headerSpacing: false
     inverted: false
     spotlight: false
     content:
       align: center
       gutter: default
-      mode: default
+      mode: list
       tileWidth: default
       width: unset
 ---
