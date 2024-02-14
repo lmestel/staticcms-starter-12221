@@ -40,7 +40,7 @@ section:
     content:
       align: center
       gutter: default
-      mode: default
+      mode: list
       tileWidth: default
       width: unset
 ---
