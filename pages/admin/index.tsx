@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { ReactElement, useMemo } from "react";
 import { NextPageWithLayout } from "../_app";
 import Head from "next/head";
+import Script from "next/script";
 
 const Admin: NextPageWithLayout = () => {
   const CMSPage = useMemo(
@@ -21,7 +22,7 @@ Admin.getLayout = function getLayout(page: ReactElement) {
   return (
     <>
       <Head>
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+        <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
       </Head>
       {page}
     </>

@@ -31,9 +31,11 @@ export default Page;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = fg.sync("content/pages/*.md").map((pagePath) => {
+    const slug = pagePath.split("/").pop()?.split(".").shift();
+    if (!slug) throw new Error("Missing slug for page");
     return {
       params: {
-        slug: [pagePath.split("/").pop()?.split(".").shift() || "home"],
+        slug: [slug],
       },
     };
   });
@@ -42,8 +44,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const slug = (params?.slug as string[] | undefined)?.join("/") || "home";
-
+  const slug = (params?.slug as string[] | undefined)?.join("/");
+  if (!slug) throw new Error("Missing slug for page");
   const content = await import(`../content/pages/${slug}.md`);
   const settings = await import("../content/settings.md");
   return { props: { content: content.default, settings: settings.default } };
