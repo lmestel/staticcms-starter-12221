@@ -21,9 +21,10 @@ const Admin: NextPageWithLayout = () => {
 Admin.getLayout = function getLayout(page: ReactElement) {
   return (
     <>
-      <Head>
-        <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
-      </Head>
+      <Script
+        strategy="beforeInteractive"
+        src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+      />
       {page}
     </>
   );
