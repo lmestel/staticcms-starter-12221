@@ -52,9 +52,9 @@ section:
     content:
       align: center
       gutter: default
-      mode: default
-      tileWidth: default
-      width: unset
+      mode: tile
+      tileWidth: ""
+      width: default
     headline:
       width: unset
       large: false
@@ -64,20 +64,27 @@ section:
       type: button
       variant: secondary
     headerSpacing: true
-    inverted: true
+    inverted: false
     spotlight: false
     components:
       - type: teaser-card
-        imageRatio: wide
+        imageRatio: square
         layout: stack
         button:
-          chevron: false
+          chevron: true
           hidden: false
+          label: btn label
         headline: |
           teaser Head
         image: /images/comp_eco01.jpg
         label: label
         target: "#route"
-        text: |
-          teaser text  teaser text teaser text
+        text: |+
+          
+
+
+
+          |sfdfsdf|sdfsdf|
+          |---|---|
+          |dsfsdf|sdfsdfsdf|
 ---
