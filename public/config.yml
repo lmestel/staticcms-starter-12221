@@ -1,7 +1,9 @@
 backend:
   name: git-gateway
   branch: main
-local_backend: true
+  identity_url: https://dsa-stackbit-starter-identity.netlify.app/.netlify/identity
+  gateway_url: https://dsa-stackbit-starter-identity.netlify.app/.netlify/git
+# local_backend: true
 locale: en
 media_folder: public/images
 public_folder: /images
