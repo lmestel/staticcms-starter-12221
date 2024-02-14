@@ -4,7 +4,7 @@ footer:
   logoHref: /
   type: footer
   navItems:
-    - href: "#home"
+    - href: /
       label: Home
     - href: "#about"
       label: About
@@ -26,7 +26,7 @@ header:
   logo:
     src: /images/logo.svg
   navItems:
-    - href: "#home"
+    - href: /
       label: Home
     - href: "#about"
       label: About
