@@ -8,6 +8,7 @@ latest:
   type: blog-teaser
   link:
     label: Read more
+    url: https://staticcms-starter-one.netlify.app/blog/blog-post1
   image: /images/2150710000.jpg
   headline: >
     Unleashing Innovation with Headless Websites: The Future of Digital
@@ -45,5 +46,6 @@ more:
   - type: blog-teaser
     link:
       label: Read more
+      url: https://staticcms-starter-one.netlify.app/blog/blog-post1
     image: /images/2150710000.jpg
 ---
