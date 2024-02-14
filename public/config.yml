@@ -6,6 +6,9 @@ locale: en
 media_folder: public/images
 public_folder: /images
 logo_url: /logo.svg
+media_library:
+  max_file_size: 2000000
+  folder_support: true
 collections:
   - name: blog-posts
     label: Blog-posts
