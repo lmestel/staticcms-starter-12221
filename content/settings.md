@@ -10,7 +10,7 @@ footer:
       label: About
     - href: "#services"
       label: Services
-    - href: "#showcases"
+    - href: /showcases
       label: Showcases
     - href: /blog
       label: Blog
@@ -32,7 +32,7 @@ header:
       label: About
     - href: "#services"
       label: Services
-    - href: "#showcases"
+    - href: /showcases
       label: Showcases
     - href: /blog
       label: Blog
