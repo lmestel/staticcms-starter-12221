@@ -12,7 +12,7 @@ section:
       switchOrder: false
       width: unset
     width: default
-    style: ""
+    style: accentTransition
     backgroundColor: default
     spaceBefore: default
     spaceAfter: default
@@ -36,11 +36,48 @@ section:
           Text
     headerSpacing: false
     inverted: false
-    spotlight: false
+    spotlight: true
     content:
       align: center
       gutter: default
       mode: list
       tileWidth: default
       width: unset
+  - backgroundColor: default
+    spaceAfter: default
+    spaceBefore: default
+    style: horizontalGradient
+    type: section
+    width: full
+    content:
+      align: center
+      gutter: default
+      mode: default
+      tileWidth: default
+      width: unset
+    headline:
+      width: unset
+      large: false
+      switchOrder: false
+    buttons:
+      size: medium
+      type: button
+      variant: secondary
+    headerSpacing: true
+    inverted: true
+    spotlight: false
+    components:
+      - type: teaser-card
+        imageRatio: wide
+        layout: stack
+        button:
+          chevron: false
+          hidden: false
+        headline: |
+          teaser Head
+        image: /images/comp_eco01.jpg
+        label: label
+        target: "#route"
+        text: |
+          teaser text  teaser text teaser text
 ---
