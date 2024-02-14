@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
   branch: main
-# local_backend: true
+local_backend: false
 locale: en
 media_folder: public/images
 public_folder: /images
@@ -17,12 +17,20 @@ collections:
     folder: content/blog-posts
     create: true
     delete: true
-    identifier_field: title
+    identifier_field: name
     extension: md
     editor:
       frame: false
     slug: "{{fields.slug}}"
     fields:
+      - label: Slug
+        name: slug
+        widget: string
+        required: true
+      - label: Name
+        name: name
+        widget: string
+        required: true
       - label: Content
         name: content
         widget: markdown
@@ -250,12 +258,20 @@ collections:
     folder: content/pages
     create: true
     delete: true
-    identifier_field: title
+    identifier_field: name
     extension: md
     editor:
       frame: false
     slug: "{{fields.slug}}"
     fields:
+      - label: Slug
+        name: slug
+        widget: string
+        required: true
+      - label: Name
+        name: name
+        widget: string
+        required: true
       - label: Type
         name: type
         widget: hidden

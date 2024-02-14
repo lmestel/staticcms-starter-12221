@@ -1,6 +1,7 @@
 ---
 type: page
-title: Components
+name: Home
+slug: home
 seo:
   type: seo
 section:
@@ -80,11 +81,9 @@ section:
         label: label
         target: "#route"
         text: |+
-          
 
 
 
-          |sfdfsdf|sdfsdf|
-          |---|---|
-          |dsfsdf|sdfsdfsdf|
+
+          |sfdfsdf|sdfsdf||---|---||dsfsdf|sdfsdfsdf|
 ---
