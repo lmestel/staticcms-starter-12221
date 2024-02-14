@@ -19,7 +19,7 @@ footer:
   logo:
     src: /images/logo.svg
 header:
-  logoHref: /home
+  logoHref: /
   type: header
   floating: true
   logo:
