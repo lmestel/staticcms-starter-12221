@@ -1,40 +1,27 @@
 ---
-type: page
-name: Home
 slug: /
+name: Home
+type: page
 seo:
   type: seo
 section:
   - type: section
     headline:
-      text: Lorem
-      sub: Ipsum
-      large: false
-      switchOrder: false
-      width: unset
-    width: default
-    style: accentTransition
-    backgroundColor: default
-    spaceBefore: default
-    spaceAfter: default
-    components:
-      - type: cta
-        textAlign: left
-        text: |
-          This is a text entered through Static CMS
-        buttons:
-          - type: buttons
-        highlightText: true
-        sub: |
-          Impossible!
-        headline: "\n\n\n"
-      - type: image-text
-        highlightText: true
-        image:
-          src: /images/comp_eco01.jpg
-        layout: above
-        text: |
-          Text
+      text: |
+        Lange Headleine an der Leine
+      sub: |
+        Subheadline for the section
+      large: true
+      switchOrder: true
+      width: narrow
+      align: left
+      textAlign: left
+    width: max
+    style: ""
+    backgroundColor: bold
+    spaceBefore: ""
+    spaceAfter: none
+    components: []
     headerSpacing: false
     inverted: false
     spotlight: true
@@ -44,46 +31,46 @@ section:
       mode: list
       tileWidth: default
       width: unset
+    buttons:
+      - size: large
+        type: button
+        variant: tertiary
+        disabled: false
+        label: test
+        icon: date
+        target: http://www.kickstartds.com
+      - size: small
+        type: button
+        variant: primary
+        disabled: false
+        icon: person
+        label: book date
+        target: "#"
   - backgroundColor: default
     spaceAfter: default
     spaceBefore: default
-    style: horizontalGradient
+    style: ""
     type: section
-    width: full
+    width: default
     content:
       align: center
       gutter: default
-      mode: tile
-      tileWidth: ""
-      width: default
+      mode: default
+      tileWidth: default
+      width: unset
     headline:
       width: unset
       large: false
       switchOrder: false
+      sub: |
+        test
+      text: |
+        test
     buttons:
       size: medium
       type: button
       variant: secondary
-    headerSpacing: true
-    inverted: false
+    headerSpacing: false
+    inverted: true
     spotlight: false
-    components:
-      - type: teaser-card
-        imageRatio: square
-        layout: stack
-        button:
-          chevron: true
-          hidden: false
-          label: btn label
-        headline: |
-          teaser Head
-        image: /images/comp_eco01.jpg
-        label: label
-        target: "#route"
-        text: |+
-
-
-
-
-          |sfdfsdf|sdfsdf||---|---||dsfsdf|sdfsdfsdf|
 ---
