@@ -13,10 +13,14 @@ import CmsPage from "./CmsPage";
 import CmsBlogPost from "./CmsBlogPost";
 import CmsBlogOverview from "./CmsBlogOverview";
 import CmsSettings from "./CmsSettings";
+import settings from "../content/settings.md";
+
+const { header, footer, seo } = (settings as Record<string, any>)
+  .attributes as DsaSettingsProps;
 
 const PagePreview: FC<TemplatePreviewProps<DsaPageProps>> = ({ entry }) => {
   return (
-    <Layout>
+    <Layout header={header} footer={footer} seo={seo}>
       <CmsPage
         seo={entry.data?.seo || { title: "Lorem Ipsum" }}
         {...entry.data}
@@ -29,7 +33,7 @@ const BlogOverviewPreview: FC<TemplatePreviewProps<DsaBlogOverviewProps>> = ({
   entry,
 }) => {
   return (
-    <Layout>
+    <Layout header={header} footer={footer} seo={seo}>
       <CmsBlogOverview
         seo={entry.data?.seo || { title: "Lorem Ipsum" }}
         {...entry.data}
@@ -42,7 +46,7 @@ const BlogPostPreview: FC<TemplatePreviewProps<DsaBlogPostProps>> = ({
   entry,
 }) => {
   return (
-    <Layout>
+    <Layout header={header} footer={footer} seo={seo}>
       <CmsBlogPost
         seo={entry.data?.seo || { title: "Lorem Ipsum" }}
         {...entry.data}
