@@ -35,7 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     if (!slug) throw new Error("Missing slug for page");
     return {
       params: {
-        slug: [slug],
+        slug: slug === "home" ? [] : [slug],
       },
     };
   });
@@ -44,7 +44,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const slug = (params?.slug as string[] | undefined)?.join("/");
+  const slug = (params?.slug as string[] | undefined)?.join("/") || "home";
   if (!slug) throw new Error("Missing slug for page");
   const content = await import(`../content/pages/${slug}.md`);
   const settings = await import("../content/settings.md");

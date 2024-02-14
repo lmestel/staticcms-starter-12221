@@ -35,7 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     if (!slug) throw new Error("Missing slug for blog post");
     return {
       params: {
-        slug: `blog/${slug}`,
+        slug,
       },
     };
   });

@@ -1,7 +1,7 @@
 ---
 type: page
 name: Home
-slug: home
+slug: /
 seo:
   type: seo
 section:
