@@ -4,9 +4,11 @@ This is a really simple project that shows the usage of Next.js with TypeScript.
 
 ## Deploy your own
 
-Deploy the example using [Vercel](https://vercel.com):
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kickstartDS/staticcms-starter&stack=cms)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-typescript)
+Once the initial build finishes, you can invite yourself as a user. Go to the Identity tab in your new site configuration, click "Invite" and send yourself an invite.
+
+Now you're all set, and you can start editing content!
 
 ## How to use it?
 

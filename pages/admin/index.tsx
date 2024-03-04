@@ -1,10 +1,9 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { ReactElement, useMemo } from "react";
-import { NextPageWithLayout } from "../_app";
-import Head from "next/head";
+import dynamic from "next/dynamic";
 import Script from "next/script";
+import { NextPageWithLayout } from "../_app";
 
 const Admin: NextPageWithLayout = () => {
   const CMSPage = useMemo(
