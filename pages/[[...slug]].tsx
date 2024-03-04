@@ -1,7 +1,9 @@
+import { ReactElement, useEffect, useState } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
+import Script from "next/script";
 import { PageProps as DsaPageProps } from "@kickstartds/ds-agency/index";
 import fg from "fast-glob";
-import { ReactElement } from "react";
 import { NextPageWithLayout } from "./_app";
 import CmsPage from "@/components/CmsPage";
 import Layout from "@/components/Layout";
@@ -11,8 +13,24 @@ type PageProps = {
 };
 
 const Page: NextPageWithLayout<PageProps> = ({ content }) => {
+  const router = useRouter();
+  const [isInviteConfirmation, setIsInviteConfirmation] = useState(false);
+
+  useEffect(() => {
+    if (router.asPath.startsWith("/#invite_token=")) {
+      setIsInviteConfirmation(true);
+    }
+  }, []);
+
   const { attributes } = content;
-  return <CmsPage {...attributes} />;
+  return (
+    <>
+      {isInviteConfirmation && (
+        <Script async src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
+      )}
+      <CmsPage {...attributes} />
+    </>
+  );
 };
 
 Page.getLayout = function getLayout(page: ReactElement) {
